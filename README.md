@@ -1,6 +1,20 @@
-# hw
+# gv
 
-## Project setup
+## Project setup - Backend
+
+We use Perl for the backend.
+
+Need to install prerq by:
+```
+cpan Mojolicious::Lite
+```
+
+Navigate to directory of choice and:
+```
+<relative path to>/gs.pl daemon
+```
+
+## Project setup - Frontend
 ```
 npm install
 ```
