@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        // mock commits data
 	commits: [
 	          { "time": "timestamp 1",
 		    "author": "Person 1",

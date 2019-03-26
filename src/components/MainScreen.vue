@@ -12,11 +12,17 @@
 import CommitLister from './CommitLister.vue'
 import CommitViewer from './CommitViewer.vue'
 
+const axios = require('axios')
+
 export default {
     name: 'MainScreen',
     components: {
-	CommitLister,
-	CommitViewer
+        CommitLister,
+        CommitViewer
+    },
+    mounted: function () {
+        axios.get('http://localhost:3000/commits')
+            .then(response => (this.$store.state.commits = response.data))
     }
 }
 </script>

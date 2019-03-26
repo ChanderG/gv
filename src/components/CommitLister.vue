@@ -9,10 +9,10 @@
 import CommitEntry from './CommitEntry.vue'
 
 export default {
-  name: 'CommitLister',
-  components: {
-    CommitEntry
-  }
+    name: 'CommitLister',
+    components: {
+        CommitEntry
+    }
 }
 </script>
 

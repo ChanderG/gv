@@ -11,23 +11,23 @@ export default {
     name: "CommitEntry",
     props: ['commit'],
     data: function () {
-      return {
-	isHighlighted: false
-      }
+        return {
+            isHighlighted: false
+        }
     },
     methods: {
 	setCurrCommit: function () {
-	    this.$store.state.currhash = this.commit.hash;
+            this.$store.state.currhash = this.commit.hash;
 	}
     },
     computed: {
-	isSelected: function () {
+        isSelected: function () {
             return this.$store.state.currhash == this.commit.hash
-	}
+        }
     }
 }
 </script>
-	 
+
 <style scoped>
 .entry {
   display: flex;
