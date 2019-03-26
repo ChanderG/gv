@@ -7,9 +7,11 @@
 
 <script>
 import MainScreen from './components/MainScreen.vue'
+import store from './store'
 
 export default {
   name: 'app',
+  store,
   components: {
     MainScreen
   }

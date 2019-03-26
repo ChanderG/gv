@@ -43,6 +43,7 @@ a {
 }
 .left {
     grid-column: 1 / 2;
+    border-right:1px solid black;
 }
 .right {
     grid-column: 2 / 2;
