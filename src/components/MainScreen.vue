@@ -45,13 +45,12 @@ a {
 }
 
 .wrapper {
-    display: grid;
 }
 .left {
-    grid-column: 1 / 2;
-    border-right:1px solid black;
+    border-bottom:1px solid black;
+    overflow-y: auto;
+    height: 400px;
 }
 .right {
-    grid-column: 2 / 2;
 }
 </style>
