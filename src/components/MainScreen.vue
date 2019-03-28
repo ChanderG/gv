@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1>gv: Tig like git visualizer</h1>
-    <div class="wrapper">
-      <CommitLister class="left"/>
-      <CommitViewer class="right"/>
+    <div>
+      <select v-model="screen">
+        <option>Log</option>
+        <option>Status</option>
+      </select>
+      <CommitLister v-if="screen == 'Log'" class="left"/>
+      <CommitViewer v-if="screen == 'Log'"/>
+      <StatusViewer v-if="screen == 'Status'"/>
     </div>
   </div>
 </template>
@@ -11,14 +16,21 @@
 <script>
 import CommitLister from './CommitLister.vue'
 import CommitViewer from './CommitViewer.vue'
+import StatusViewer from './StatusViewer.vue'
 
 const axios = require('axios')
 
 export default {
     name: 'MainScreen',
+    data: function () {
+        return {
+            screen: "Log"
+        }
+    },
     components: {
         CommitLister,
-        CommitViewer
+        CommitViewer,
+        StatusViewer
     },
     mounted: function () {
         axios.get('http://localhost:3000/commits')
@@ -44,13 +56,10 @@ a {
   color: #42b983;
 }
 
-.wrapper {
-}
 .left {
     border-bottom:1px solid black;
     overflow-y: auto;
     height: 400px;
 }
-.right {
-}
+
 </style>
