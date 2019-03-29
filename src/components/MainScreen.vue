@@ -35,6 +35,19 @@ export default {
     mounted: function () {
         axios.get('http://localhost:3000/commits')
             .then(response => (this.$store.state.commits = response.data))
+    },
+    created: function () {
+        // live updates of status
+        var conn = new WebSocket('ws://localhost:3001');
+        var vm = this
+
+        conn.onmessage = function (e) {
+            vm.$store.state.status = e.data
+        }
+
+        conn.onopen = function (e) {
+            conn.send("status")
+        }
     }
 }
 </script>

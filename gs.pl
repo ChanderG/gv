@@ -40,9 +40,9 @@ sub updateStatus {
 	my $newgs = `git status`;
 	if ($gs ne $newgs) {
 		$gs = $newgs;
-		return 0;
+		return 1;
 	}
-	return 1;
+	return 0;
 };
 
 async {Net::WebSocket::Server->new(
