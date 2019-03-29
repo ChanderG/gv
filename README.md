@@ -7,6 +7,7 @@ We use Perl for the backend.
 Need to install prerq by:
 ```
 cpan Mojolicious::Lite
+cpan Net::WebSocket::Server
 ```
 
 Navigate to directory of choice and:
@@ -41,3 +42,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Links
+
+1. WebSocket for the frontend: https://www.html5rocks.com/en/tutorials/websockets/basics/
+2. 
