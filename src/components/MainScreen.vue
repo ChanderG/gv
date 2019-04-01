@@ -1,6 +1,6 @@
 <template>
   <div>
-<v-navigation-drawer fixed clipped app>
+<v-navigation-drawer fixed clipped app class="blue lighten-2" dark :mini-variant="mini">
   
   <v-list-tile @click="screen = 'Status'">
     <v-list-tile-action>
@@ -19,8 +19,13 @@
       <v-list-tile-title> Log </v-list-tile-title>
     </v-list-tile-content>
   </v-list-tile>
-  
+
+<v-btn dark small fixed bottom right fab @click="mini = !mini">
+  <v-icon>compare_arrows</v-icon>
+</v-btn>
+
 </v-navigation-drawer>
+
 
 <v-content>
   <v-container>
@@ -50,7 +55,8 @@ export default {
     name: 'MainScreen',
     data: function () {
         return {
-            screen: "Log"
+            screen: "Log",
+            mini: true
         }
     },
     components: {
