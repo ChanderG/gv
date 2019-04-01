@@ -1,8 +1,15 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <v-app>
+    <v-toolbar app clipped-left>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>gV</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <span class="headline font-weight-light">The tig like Git Visualizer</span>
+    </v-toolbar>
+
     <MainScreen/>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -17,14 +24,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

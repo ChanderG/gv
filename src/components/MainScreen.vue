@@ -1,16 +1,42 @@
 <template>
   <div>
-    <h1>gv: Tig like git visualizer</h1>
-    <div>
-      <select v-model="screen">
-        <option>Log</option>
-        <option>Status</option>
-      </select>
-      <CommitLister v-if="screen == 'Log'" class="left"/>
-      <CommitViewer v-if="screen == 'Log'"/>
-      <StatusViewer v-if="screen == 'Status'"/>
-    </div>
-  </div>
+<v-navigation-drawer fixed clipped app>
+  
+  <v-list-tile @click="screen = 'Status'">
+    <v-list-tile-action>
+      <v-icon>dashboard</v-icon>
+    </v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title> Status </v-list-tile-title>
+    </v-list-tile-content>
+  </v-list-tile>
+  
+  <v-list-tile @click="screen = 'Log'">
+    <v-list-tile-action>
+      <v-icon>account_box</v-icon>
+    </v-list-tile-action>
+    <v-list-tile-content>
+      <v-list-tile-title> Log </v-list-tile-title>
+    </v-list-tile-content>
+  </v-list-tile>
+  
+</v-navigation-drawer>
+
+<v-content>
+  <v-container>
+    <v-layout column>
+      <v-flex>
+        <CommitLister v-if="screen == 'Log'"/>
+      </v-flex>
+      <v-flex>
+        <CommitViewer v-if="screen == 'Log'"/>
+      </v-flex>
+    </v-layout>
+    <StatusViewer v-if="screen == 'Status'"/>
+   </v-layout>
+ </v-container>
+</v-content>
+</div>
 </template>
 
 <script>
@@ -40,11 +66,11 @@ export default {
         // live updates of status
         var conn = new WebSocket('ws://localhost:3001');
         var vm = this
-
+        
         conn.onmessage = function (e) {
             vm.$store.state.status = e.data
         }
-
+        
         conn.onopen = function (e) {
             conn.send("status")
         }
@@ -55,24 +81,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+    margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #42b983;
 }
-
-.left {
-    border-bottom:1px solid black;
-    overflow-y: auto;
-    height: 400px;
-}
-
 </style>
